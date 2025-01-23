@@ -1,5 +1,20 @@
-## Foundry
+## Smart contract
 
+
+# Getting started with Smart contract
+
+## Deploy entrypoint
+```shell
+$ forge script --chain amoy script/EntryPoint.s.sol:EntryPointScript  --rpc-url ${RPC_URL}  --broadcast
+```
+
+## Verify entrypoint
+```shell
+$ forge verify-contract --verifier-url https://api-amoy.polygonscan.com/api/ ${ENTRY_POINT_ADDRESS}  src/core/EntryPoint.sol:EntryPoint --chain amoy --etherscan-api-key ${POLYGONSCAN_API_KEY}
+```
+
+
+```shell
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
 Foundry consists of:
