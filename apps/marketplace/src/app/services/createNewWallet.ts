@@ -1,0 +1,31 @@
+const { ethers } = require("ethers");
+
+// Connect to the Ethereum network
+const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID");
+
+// Define the WalletFactory contract address and ABI
+const walletFactoryAddress = "0xWalletFactoryContractAddress";
+const walletFactoryABI = [
+    "function createWallet() external returns (address)",
+    "event WalletCreated(address indexed owner, address wallet)"
+];
+
+// Create a signer
+const signer = provider.getSigner();
+
+// Create a contract instance
+const walletFactoryContract = new ethers.Contract(walletFactoryAddress, walletFactoryABI, signer);
+const salt = 'randomString';
+const deployerAddress = provider.getAddresses()[0];
+// Create a new wallet
+async function createNewWallet() {
+    const tx = await walletFactoryContract.createAccount(deployerAddress, salt);
+    const receipt = await tx.wait();
+    const walletCreatedEvent = receipt.events.find(event => event.event === "AccountCreated");
+    const newWalletAddress = walletCreatedEvent.args.wallet;
+    console.log("New wallet created at:", newWalletAddress);
+}
+
+createNewWallet();
+// Implement getAddress(deployerAddress, salt)
+// To Think: Gustavo Silva might use getAddress() to get the the account address instead of using the event, less expensive
