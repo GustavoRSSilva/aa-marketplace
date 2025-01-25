@@ -1,0 +1,32 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "aa-marketplace",
+      "devDependencies": {
+        "prettier": "^3.2.5",
+        "turbo": "^2.3.3",
+        "typescript": "5.5.4",
+      },
+    },
+  },
+  "packages": {
+    "prettier": ["prettier@3.4.2", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ=="],
+
+    "turbo": ["turbo@2.3.4", "", { "optionalDependencies": { "turbo-darwin-64": "2.3.4", "turbo-darwin-arm64": "2.3.4", "turbo-linux-64": "2.3.4", "turbo-linux-arm64": "2.3.4", "turbo-windows-64": "2.3.4", "turbo-windows-arm64": "2.3.4" }, "bin": { "turbo": "bin/turbo" } }, "sha512-1kiLO5C0Okh5ay1DbHsxkPsw9Sjsbjzm6cF85CpWjR0BIyBFNDbKqtUyqGADRS1dbbZoQanJZVj4MS5kk8J42Q=="],
+
+    "turbo-darwin-64": ["turbo-darwin-64@2.3.4", "", { "os": "darwin", "cpu": "x64" }, "sha512-uOi/cUIGQI7uakZygH+cZQ5D4w+aMLlVCN2KTGot+cmefatps2ZmRRufuHrEM0Rl63opdKD8/JIu+54s25qkfg=="],
+
+    "turbo-darwin-arm64": ["turbo-darwin-arm64@2.3.4", "", { "os": "darwin", "cpu": "arm64" }, "sha512-IIM1Lq5R+EGMtM1YFGl4x8Xkr0MWb4HvyU8N4LNoQ1Be5aycrOE+VVfH+cDg/Q4csn+8bxCOxhRp5KmUflrVTQ=="],
+
+    "turbo-linux-64": ["turbo-linux-64@2.3.4", "", { "os": "linux", "cpu": "x64" }, "sha512-1aD2EfR7NfjFXNH3mYU5gybLJEFi2IGOoKwoPLchAFRQ6OEJQj201/oNo9CDL75IIrQo64/NpEgVyZtoPlfhfA=="],
+
+    "turbo-linux-arm64": ["turbo-linux-arm64@2.3.4", "", { "os": "linux", "cpu": "arm64" }, "sha512-MxTpdKwxCaA5IlybPxgGLu54fT2svdqTIxRd0TQmpRJIjM0s4kbM+7YiLk0mOh6dGqlWPUsxz/A0Mkn8Xr5o7Q=="],
+
+    "turbo-windows-64": ["turbo-windows-64@2.3.4", "", { "os": "win32", "cpu": "x64" }, "sha512-yyCrWqcRGu1AOOlrYzRnizEtdkqi+qKP0MW9dbk9OsMDXaOI5jlWtTY/AtWMkLw/czVJ7yS9Ex1vi9DB6YsFvw=="],
+
+    "turbo-windows-arm64": ["turbo-windows-arm64@2.3.4", "", { "os": "win32", "cpu": "arm64" }, "sha512-PggC3qH+njPfn1PDVwKrQvvQby8X09ufbqZ2Ha4uSu+5TvPorHHkAbZVHKYj2Y+tvVzxRzi4Sv6NdHXBS9Be5w=="],
+
+    "typescript": ["typescript@5.5.4", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q=="],
+  }
+}
