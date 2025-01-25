@@ -1,11 +1,27 @@
-'use client'
+"use client";
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useRouter } from "next/navigation";
+import { useAccount, useConnect, useDisconnect, Connector } from "wagmi";
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
+  const account = useAccount();
+  const { connectors, connect, status, error } = useConnect();
+  const { disconnect } = useDisconnect();
+  const router = useRouter();
+
+  const handleConnect = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    connector: Connector,
+  ) => {
+    e.preventDefault();
+    connect({ connector });
+    router.push("/");
+  };
+
+  const handleSCAConnect = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push("/");
+  };
 
   return (
     <>
@@ -20,7 +36,7 @@ function App() {
           chainId: {account.chainId}
         </div>
 
-        {account.status === 'connected' && (
+        {account.status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
             Disconnect
           </button>
@@ -29,26 +45,30 @@ function App() {
 
       <div>
         <h2>Connect</h2>
-        {connectors.map((connector) => (
+        {connectors.map((connector: Connector) => (
           <button
             key={connector.uid}
-            onClick={() => connect({ connector })}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              handleConnect(e, connector)
+            }
             type="button"
           >
             {connector.name}
           </button>
         ))}
-          <button
-            onClick={() => null}
-            type="button"
-          >
-            ERC-4337 SCA
-          </button>
+        <button
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+            handleSCAConnect(e)
+          }
+          type="button"
+        >
+          ERC-4337 SCA
+        </button>
         <div>{status}</div>
         <div>{error?.message}</div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
