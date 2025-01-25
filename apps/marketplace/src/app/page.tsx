@@ -1,52 +1,17 @@
 'use client'
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import Link from "next/link"
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
-
   return (
     <>
-      <div>
-        <h2>Account</h2>
-
-        <div>
-          status: {account.status}
-          <br />
-          addresses: {JSON.stringify(account.addresses)}
-          <br />
-          chainId: {account.chainId}
-        </div>
-
-        {account.status === 'connected' && (
-          <button type="button" onClick={() => disconnect()}>
-            Disconnect
-          </button>
-        )}
-      </div>
-
-      <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.uid}
-            onClick={() => connect({ connector })}
+        <h2>Account Abstraction Marketplace</h2>
+          <Link href="/login"
             type="button"
+            
           >
-            {connector.name}
-          </button>
-        ))}
-          <button
-            onClick={() => null}
-            type="button"
-          >
-            ERC-4337 SCA
-          </button>
-        <div>{status}</div>
-        <div>{error?.message}</div>
-      </div>
+            Login
+          </Link>
     </>
   )
 }
