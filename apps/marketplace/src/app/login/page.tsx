@@ -1,24 +1,27 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { useAccount, useConnect, useDisconnect, Connector } from 'wagmi'
+import { useRouter } from "next/navigation";
+import { useAccount, useConnect, useDisconnect, Connector } from "wagmi";
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
-  const router = useRouter()
+  const account = useAccount();
+  const { connectors, connect, status, error } = useConnect();
+  const { disconnect } = useDisconnect();
+  const router = useRouter();
 
-  const handleConnect = (e: React.MouseEvent<HTMLButtonElement>, connector: Connector) => {
-      e.preventDefault()
-      connect({ connector })
-      router.push('/')
-  }
+  const handleConnect = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    connector: Connector,
+  ) => {
+    e.preventDefault();
+    connect({ connector });
+    router.push("/");
+  };
 
   const handleSCAConnect = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    router.push('/')
-  }
+    e.preventDefault();
+    router.push("/");
+  };
 
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
           chainId: {account.chainId}
         </div>
 
-        {account.status === 'connected' && (
+        {account.status === "connected" && (
           <button type="button" onClick={() => disconnect()}>
             Disconnect
           </button>
@@ -45,23 +48,27 @@ function App() {
         {connectors.map((connector: Connector) => (
           <button
             key={connector.uid}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleConnect(e, connector)}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              handleConnect(e, connector)
+            }
             type="button"
           >
             {connector.name}
           </button>
         ))}
-          <button
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleSCAConnect(e)}
-            type="button"
-          >
-            ERC-4337 SCA
-          </button>
+        <button
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+            handleSCAConnect(e)
+          }
+          type="button"
+        >
+          ERC-4337 SCA
+        </button>
         <div>{status}</div>
         <div>{error?.message}</div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
