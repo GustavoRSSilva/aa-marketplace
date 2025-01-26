@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import ethers from "ethers";
 
 // Define the UserOperation
 const userOperation = {
@@ -8,14 +8,14 @@ const userOperation = {
   callGasLimit: 100000,
   verificationGasLimit: 50000,
   preVerificationGas: 21000,
-  maxFeePerGas: ethers.utils.parseUnits("100", "gwei"),
-  maxPriorityFeePerGas: ethers.utils.parseUnits("2", "gwei"),
+  maxFeePerGas: ethers.parseUnits("100", "gwei"),
+  maxPriorityFeePerGas: ethers.parseUnits("2", "gwei"),
   paymasterAndData: "0x",
   signature: "0xSignature",
 };
 
 // Connect to the Ethereum network
-const provider = new ethers.providers.JsonRpcProvider(
+const provider = new ethers.JsonRpcProvider(
   "https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID",
 );
 
