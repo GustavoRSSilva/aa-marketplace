@@ -25,5 +25,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "ethers": "^6.13.5",
+    "jotai": "^2.11.1"
+  }
 }

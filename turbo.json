@@ -1,6 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
+  "globalEnv": ["SIMPLE_ACCOUNT_FACTORY_AMOY_ADDRESS", "ENTRY_POINT_AMOY_ADDRESS"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
